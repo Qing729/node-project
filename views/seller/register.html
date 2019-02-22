@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="/public/bootstrap/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="/public/seller/css/register.css" />
+</head>
+
+<body>
+    <h1>卖家注册</h1>
+    <div class="myform">
+        <div class="form-group">
+            <label>卖家用户名：</label>
+            <input type="text" name="user" class="form-control" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+            <label>密码：</label>
+            <input type="password" name="psd" class="form-control" placeholder="请输入密码">
+        </div>
+        <div class="form-group">
+            <label>确认密码：</label>
+            <input type="password" name="repsd" class="form-control" placeholder="请再次输入密码">
+        </div>
+        <form id="logo-form" action="/upload" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <label>请上传logo图片</label>
+                <input id="logoInput" name="images" type="file" />
+                <div class="logo-wrapper">
+                    <img class="logo" src="http://placehold.it/150x150" />
+                </div>
+            </div>
+        </form>
+        <form id="banner-form" action="/upload" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <label>请上传banner图片</label>
+                <input id="bannerInput" name="images" type="file" />
+                <div class="banner-wrapper">
+                    <img class="banner" src="http://placehold.it/980X300" />
+                </div>
+            </div>
+        </form>
+        <button id="confirm" class="btn btn-success btn-block">注册</button>
+        <button class="btn btn-danger btn-block">取消</button>
+    </div>
+    <script src="/public/buyer/js/lib/jquery-3.2.1.js"></script>
+    <script src="/public/bootstrap/js/bootstrap.js"></script>
+    <script src="/public/seller/js/register.js"></script>
+</body>
+
+</html>

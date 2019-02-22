@@ -1,0 +1,67 @@
+{% extends './layout.html' %}
+
+{% block content %}
+    <div class="logo">
+        <h1>{{goodsInfo.seller.username}}</h1>
+        <img width="100" height="100" src="{{goodsInfo.seller.logo}}"/>
+    </div>  
+    <div class="banner">
+        <img width="980" height="300" src="{{goodsInfo.seller.banner}}"/>
+    </div>
+    <div class="goodsinfo">
+        <img width="200" height="250" src="{{goodsInfo.smallImage}}"/>
+        <h3>{{goodsInfo.title}}</h3>     
+        <p>{{goodsInfo.description}}</p>
+        <p>价格：¥{{goodsInfo.price}}</p>
+        <ul class="size">
+            {% for item in goodsInfo.size %}
+                <li class="checksize">{{item}}</li>
+            {% endfor %}
+        </ul>
+        <ul class="style">
+            {% for item in goodsInfo.style %}
+                <li class="checkstyle">{{item}}</li>
+            {% endfor %}
+        </ul>
+        <div style="overflow:hidden"><input type='text' class='spinnerExample' value=''></div>
+        <button id="addcart" class="btn btn-default" data-goods="{{goodsInfo._id.toString()}}" data-seller="{{goodsInfo.seller._id.toString()}}" data-buyer="{{buyer.toString()}}">添加到购物车</button>
+        <button id="buy" class="btn btn-default" data-goods="{{goodsInfo._id.toString()}}" data-seller="{{goodsInfo.seller._id.toString()}}" data-buyer="{{buyer.toString()}}">立即购买</button>
+    </div>
+    {% for imgPath in goodsInfo.bigImages %}
+    <img  width="980" src="{{imgPath}}"/>
+    {% endfor %} 
+{% endblock %}
+
+{% block css %}
+<style>
+    *{
+        margin: 0;
+        padding: 0
+    }
+    .size,.style{
+        overflow: hidden;
+    }
+    .size li,.style li{
+        float: left;
+        padding: 6px 12px;
+        font-size: 16px;
+        border: 1px solid #cccccc;
+        margin-right: 5px;
+        list-style: none;
+        cursor: pointer;
+    }
+    .checked{
+        background: red;
+    }
+</style>
+{% endblock %}
+
+{% block js %}
+<script>
+$('.spinnerExample').spinner({
+    value:1,
+    min : 1
+});
+</script>
+<script src="/public/buyer/js/goodsDetail.js"></script> 
+{% endblock %}

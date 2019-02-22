@@ -1,0 +1,60 @@
+{% extends './layout.html' %}
+
+{% block content %}
+    <h1>购物车</h1>
+{% if buyername %}
+    {%  if cartList.length>0 %}
+    <table class="table">
+        <tr>
+            <th>名称</th>
+            <th>缩略图</th>
+            <th>价格</th>
+            <th>尺码</th>
+            <th>款式</th>
+            <th>数量</th>
+            <th>操作</th>
+        </tr>
+        {% for goods in cartList %}
+        <tr>   
+            <td>{{goods.goods.title}}</td>
+            <td>
+                <img src="{{goods.goods.smallImage}}"/>
+            </td>
+            <td>{{goods.goods.price}}</td>
+            <td>{{goods.size}}</td>
+            <td>{{goods.style}}</td>
+            <td><input type='text' class='spinnerExample' value='{{goods.count}}'></td>
+            <td>
+                <button class="btn btn-danger" id="del" data-info="{{goods._id.toString()}}">删除</button>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+{% else %}
+        <p>购物车没有商品，去<a href="/goodslist">商品区</a>添加</p>
+{% endif %}
+
+{% endblock %}
+
+{% block js %}
+<script>
+    var k= $('.spinnerExample').spinner({
+        value:1,
+        min : 1
+    });
+    for(var j = 0;j<k.length;j++){
+        k[j].value = k[j].defaultValue;
+    };
+</script>
+<script src="/public/buyer/js/goodsCart.js"></script> 
+{% endblock %}
+
+{% block css %}
+<style>
+    .table img{
+        width: 40px;
+    }
+</style>
+{% endblock %}

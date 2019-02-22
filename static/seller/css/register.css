@@ -1,0 +1,20 @@
+.myform{
+    width: 300px;
+    height: 40px;
+}
+.logo-wrapper{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+.logo-wrapper img{
+    width: 100%;
+}
+.banner-wrapper{
+    width: 980px;
+    height: 300px;
+    overflow: hidden;
+}
+.banner-wrapper img{
+    width: 100%;
+}

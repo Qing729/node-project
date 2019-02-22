@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="/public/bootstrap/css/bootstrap.css" />
+    <style>
+      
+    </style>
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">商城后台管理</a>
+                  </div>
+          
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                    <ul class="nav navbar-nav">
+                      <li class={{goodslistActive}}><a href="/seller/goodslist">商品管理</a></li>
+                      <li class={{orderlistActive}}><a href="/seller/orderlist">订单管理</a></li>
+                      <li class={{sellerinfoActive}}><a href="/seller/sellerinfo">商家信息</a></li>                     
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">商城首页</a></li>
+                        <li><a href="/seller/logout">退出</a></li>
+                    </ul>
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+              </nav>
+              {% block content %}
+              {% endblock %}
+    <script src="/public/buyer/js/lib/jquery-3.2.1.js"></script>
+    <script src="/public/bootstrap/js/bootstrap.js"></script>
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>

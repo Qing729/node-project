@@ -1,0 +1,53 @@
+{% extends './layout.html' %}
+
+{% block content %}
+    <h1>订单列表</h1>
+{% if sellername %}
+    {%  if orderList.length>0 %}
+    <table class="table">
+        <tr>
+            <th>买家</th>
+            <th>名称</th>
+            <th>缩略图</th>
+            <th>价格</th>
+            <th>尺码</th>
+            <th>款式</th>
+            <th>数量</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        {% for goods in orderList %}
+        <tr>  
+            <td>{{goods.buyer.username}}</td> 
+            <td>{{goods.goods.title}}</td>
+            <td>
+                <img src="{{goods.goods.smallImage}}"/>
+            </td>
+            <td>{{goods.goods.price}}</td>
+            <td>{{goods.size}}</td>
+            <td>{{goods.style}}</td>
+            <td>{{goods.count}}</td>
+            <td>待发货</td>
+            <td>
+                <button class="btn btn-danger" data-info="{{goods._id.toString()}}">发货</button>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+{% endif %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block css %}
+<style>
+    .table img{
+        width: 40px;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends './layout.html' %}
+
+{% block content %}
+    <h1>商家列表页</h1>
+    <ul class="seller-wrapper">
+        {% for seller in sellerList %}
+        <a class="seller-item" href="/sellerDetail?id={{seller._id.toString()}}">
+            <img src="{{seller.logo}}"/>
+            <h1>{{seller.username}}</h1>
+        </a>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block css %}
+<style>
+.seller-wrapper{
+    width: 980px;
+    margin: 0 auto;
+}
+.seller-wrapper .seller-item{
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    display: flex;
+}
+.seller-wrapper .seller-item img{
+    width: 100px;
+    height: 100px;
+}
+.seller-wrapper .seller-item h1{
+    margin-left: 10px;
+    flex: 1;
+}
+</style>
+
+{% endblock %}

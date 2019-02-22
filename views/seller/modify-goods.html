@@ -1,0 +1,115 @@
+{% extends './layout.html' %}
+
+{% block content %}
+    <a class="btn btn-default" href="/seller/goodslist">返回</a>
+
+    <h1>修改商品</h1>
+    <div class="wrapper">
+        <div class="form-group">
+            <label>名称：</label>
+            <input name="title" class="form-control" type="text" placeholder="名称" value="{{goodsinfo.title}}"/>
+        </div>
+        <div class="form-group">
+            <label>商品描述：</label>
+            <textarea id="des" class="form-control">{{goodsinfo.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label>价格：</label>
+            <input name="price" class="form-control" type="number" placeholder="价格" value="{{goodsinfo.price}}"/>
+        </div>
+        <div class="form-group">
+            <label>尺码：</label>
+            <input name="size" class="form-control" type="text" placeholder="尺码" />
+            <button id="addsize" class="btn btn-block btn-success">添加</button>
+            <div class="sizelist">
+                {% if goodsinfo.size.length>0 %}
+                    {% for index, item in goodsinfo.size %}
+                        <span><b>{{item}}</b><i class="err">x</i></span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group">
+            <label>款式：</label>
+            <input name="style" class="form-control" type="text" placeholder="款式" />
+            <button id="addstyle" class="btn btn-block btn-success">添加</button>
+            <div class="stylelist">
+                {% if goodsinfo.style.length>0 %}
+                    {% for index, item in goodsinfo.style %}
+                         <span><b>{{item}}</b><i class="err">x</i></span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div>
+        <form id="smallForm" action="/upload" enctype="multipart/form-data" method="post">
+            <label>请上传商品缩略图</label>
+            <input name="images" id="smallInput" type="file"/>
+            <img class="small-image" src="{{goodsinfo.smallImage}}"/>
+        </form>
+        <form  id="bigForm" action="/upload" enctype="multipart/form-data" method="post">
+            <label>请上传商品详情图</label>
+            <input name="images" id="bigInput" type="file" multiple/>
+            <div class="big-image-list">
+                {% if goodsinfo.bigImages.length>0 %}
+                    {% for index, item in goodsinfo.bigImages %}
+                    <img src="{{item}}"/> 
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </form>
+        </div>
+        <button id="confirm" class="btn btn-block btn-success">保存修改</button>
+        <button class="btn btn-block btn-danger">取消</button>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script src="/public/seller/js/modify-goods.js"></script>
+{% endblock %}
+
+
+{% block css %}
+<style>
+    .sizelist,.stylelist{
+        overflow: hidden;
+    }
+    .sizelist span,.stylelist span{
+        float: left;
+        display: block;
+        padding: 6px 12px;
+        font-size: 16px;
+        text-align: center;
+        position: relative;
+        border:1px solid #cccccc;
+        background: #ffffff;
+        margin-right: 5px;
+    }
+    .sizelist span i,.stylelist span i{
+        display: block;
+        font-style: normal;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        font-size: 8px;
+        line-height: 10px;
+        text-align: center;
+        top: 0;
+        right: 0;
+        color: #ffffff;
+        background: red;
+        cursor: pointer;
+    }
+    .small-image{
+        width: 200px;
+        height: 200px;
+    }
+    .big-image-list{
+        width: 600px;
+        margin: 0 auto;
+    }
+    .big-image-list img{
+        width: 600px;
+    }
+</style>
+{% endblock %}

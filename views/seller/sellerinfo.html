@@ -1,0 +1,30 @@
+{% extends './layout.html' %}
+
+{% block content %}
+<h1 class="title">
+    <span>{{sellerInfo.username}}</span>
+    <img class="logo" src="{{sellerInfo.logo}}"/>
+</h1>
+<div class="banner">
+    <img src="{{sellerInfo.banner}}"/>
+</div>
+{% endblock %}
+
+{% block css %}
+<style>
+.banner{
+    width: 980px;
+    margin: 0 auto;
+    height: 300px;
+    overflow: hidden;
+}
+.banner img{
+    width: 100%;
+}
+.logo{
+    width: 200px;
+    height: 100px;
+}
+
+</style>
+{% endblock %}
